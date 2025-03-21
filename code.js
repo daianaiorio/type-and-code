@@ -1,15 +1,15 @@
 export const configurazione = {
-  testo: "S",
+  testo: "spype",
 
   dimensione: 0.8,
   interlinea: 0.7,
   allineamento: "centro",
   percorsoFont: "./assets/InputMonoCondensed-BoldItalic.ttf",
 
-  sensibilitàMicrofonoBase: 1,
+  sensibilitàMicrofonoBase: 10,
   densitàPuntiBase: 1,
 
-  nascondiInterfaccia: false,
+  nascondiInterfaccia: true,
 };
 
 /**
@@ -42,18 +42,44 @@ export function disegnaPunto({
   beta = 0,
   gamma = 0,
 }) {
-  const size = sin((frameCount + indice) * 6) * ((volume * unita) / 2) * unita;
+  let i = indice + frameCount;
 
-  if (indice % 2 == 0) {
+  // Colori ciclici
+  if (i % 3 === 0) {
+    fill("deeppink");
+  } else if (i % 3 === 1) {
     fill("black");
   } else {
     fill("white");
   }
-  noStroke();
 
+  // // QUADRATO che pulsa col volume
+  // push();
+  // translate(x, y);
+  // rotate(frameCount * 2 + indice); // Rotazione continua
+  // rectMode(CENTER);
+  // let size = 10 + volume * 30;
+  // rect(0, 0, size, size);
+  // pop();
+
+  // STELLA che si muove con angolo e volume
   push();
   translate(x, y);
-  ellipse(0, 0, size);
+  rotate(angolo + frameCount);
+  stroke("white");
+  strokeWeight(1);
+  noFill();
+  let r1 = 5 + volume * 20;
+  let r2 = 10 + volume * 30;
+  beginShape();
+  for (let j = 0; j < 10; j++) {
+    let angle = j * 36;
+    let rad = j % 2 === 0 ? r2 : r1;
+    let sx = cos(angle) * rad;
+    let sy = sin(angle) * rad;
+    vertex(sx, sy);
+  }
+  endShape(CLOSE);
   pop();
 }
 
@@ -77,7 +103,7 @@ export function impostazioni() {
  * @param {function} disegnaTesto - La funzione che disegna il testo
  */
 export function sotto(disegnaTesto) {
-  background("deeppink");
+  background("black");
 
   // [INFO] Rimuovi il commento per disegnare il testo
   fill("white");
