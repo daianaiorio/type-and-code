@@ -45,8 +45,10 @@ export function disegnaPunto({
   push();
   translate(x, y);
   stroke("white");
-  line(0, 0, 0, beta);
 
+  let b = map(beta, -90, 90, -unità, unità);
+  let g = map(gamma, -90, 90, -unità, unità);
+  line(0, 0, b, g);
   pop();
 }
 
