@@ -6,7 +6,7 @@ export const configurazione = {
   allineamento: "centro",
   percorsoFont: "./assets/InputMonoCondensed-BoldItalic.ttf",
 
-  sensibilitàMicrofonoBase: 10,
+  sensibilitàMicrofonoBase: 1,
   densitàPuntiBase: 1,
 
   nascondiInterfaccia: true,
@@ -30,6 +30,7 @@ export const configurazione = {
  *
  * @param {Ingredienti} ingredienti
  */
+let cerchi = [15]; // Array per memorizzare le posizioni dei cerchi
 export function disegnaPunto({
   x,
   y,
@@ -42,11 +43,19 @@ export function disegnaPunto({
   beta = 0,
   gamma = 0,
 }) {
+  const size = sin((frameCount + indice) * 10) * ((volume * 20) / 2) * 40;
+  let lunghezza = map(volume * 50, 0, 10, 0, 50);
+
+  if (indice % 2 == 0) {
+    fill("black");
+  } else {
+    fill("white");
+  }
+  noStroke();
+
   push();
   translate(x, y);
-  rotate(random(0, 360));
-  translate(volume * 1000, 0);
-  ellipse(0, 0, 20, 20);
+  ellipse(0, 0, size);
   pop();
 }
 
@@ -73,7 +82,7 @@ export function sotto(disegnaTesto) {
   background("black");
 
   // [INFO] Rimuovi il commento per disegnare il testo
-  fill("white");
+  fill("black");
   disegnaTesto();
 }
 
