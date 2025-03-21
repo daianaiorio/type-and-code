@@ -30,6 +30,7 @@ export const configurazione = {
  *
  * @param {Ingredienti} ingredienti
  */
+let cerchi = [15]; // Array per memorizzare le posizioni dei cerchi
 export function disegnaPunto({
   x,
   y,
@@ -42,7 +43,8 @@ export function disegnaPunto({
   beta = 0,
   gamma = 0,
 }) {
-  const size = sin((frameCount + indice) * 6) * ((volume * unita) / 2) * unita;
+  const size = sin((frameCount + indice) * 10) * ((volume * 20) / 2) * 40;
+  let lunghezza = map(volume * 50, 0, 10, 0, 50);
 
   if (indice % 2 == 0) {
     fill("black");
@@ -77,10 +79,10 @@ export function impostazioni() {
  * @param {function} disegnaTesto - La funzione che disegna il testo
  */
 export function sotto(disegnaTesto) {
-  background("deeppink");
+  background("black");
 
   // [INFO] Rimuovi il commento per disegnare il testo
-  fill("white");
+  fill("black");
   disegnaTesto();
 }
 
