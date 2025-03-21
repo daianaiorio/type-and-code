@@ -46,9 +46,9 @@ export function disegnaPunto({
   translate(x, y);
   stroke("white");
 
-  let b = map(beta, -90, 90, -unità, unità);
-  let g = map(gamma, -90, 90, -unità, unità);
-  line(0, 0, b, g);
+  let b = map(beta, -90, 90, -unita, unita);
+  let g = map(gamma, -90, 90, -unita, unita);
+  line(0, 0, g, b);
   pop();
 }
 
@@ -75,8 +75,8 @@ export function sotto(disegnaTesto) {
   background("blue");
 
   // [INFO] Rimuovi il commento per disegnare il testo
-  fill("deeppink");
-  disegnaTesto();
+  // fill("deeppink");
+  // disegnaTesto();
 }
 
 /**
