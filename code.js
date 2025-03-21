@@ -1,15 +1,15 @@
 export const configurazione = {
-  testo: "S",
+  testo: "SPYPE",
 
   dimensione: 0.8,
   interlinea: 0.7,
   allineamento: "centro",
   percorsoFont: "./assets/InputMonoCondensed-BoldItalic.ttf",
 
-  sensibilitàMicrofonoBase: 1,
+  sensibilitàMicrofonoBase: 10,
   densitàPuntiBase: 1,
 
-  nascondiInterfaccia: false,
+  nascondiInterfaccia: true,
 };
 
 /**
@@ -42,18 +42,11 @@ export function disegnaPunto({
   beta = 0,
   gamma = 0,
 }) {
-  const size = sin((frameCount + indice) * 6) * ((volume * unita) / 2) * unita;
-
-  if (indice % 2 == 0) {
-    fill("black");
-  } else {
-    fill("white");
-  }
-  noStroke();
-
   push();
   translate(x, y);
-  ellipse(0, 0, size);
+  rotate(random(0, 360));
+  translate(volume * 1000, 0);
+  ellipse(0, 0, 20, 20);
   pop();
 }
 
@@ -77,7 +70,7 @@ export function impostazioni() {
  * @param {function} disegnaTesto - La funzione che disegna il testo
  */
 export function sotto(disegnaTesto) {
-  background("deeppink");
+  background("black");
 
   // [INFO] Rimuovi il commento per disegnare il testo
   fill("white");
