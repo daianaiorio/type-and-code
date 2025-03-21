@@ -70,6 +70,21 @@ export function disegnaPunto({
 
     pop(); // Ripristina lo stato grafico
   }
+  push(); // Salva lo stato grafico
+  translate(x, y); // Porta l'origine sul punto
+  rotate(angolo); // Allinea al tratto della lettera
+
+  // Parametri dinamici
+  let grandezza = unita * 0.5 + volume * unita * 2; // La grandezza cambia col volume
+  let rotazione = sin(frameCount * 2 + indice) * 45; // Rotazione oscillante
+
+  // Disegna cerchi animati
+  rotate(rotazione);
+  noStroke();
+  fill(255, 255, 255, 180); // Colore bianco con trasparenza
+  ellipse(0, 0, grandezza, grandezza);
+
+  pop(); // Ripristina lo stato grafico
 }
 
 /**
