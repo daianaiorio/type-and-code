@@ -1,5 +1,5 @@
 export const configurazione = {
-  testo: "S",
+  testo: "Y",
 
   dimensione: 0.8,
   interlinea: 0.7,
@@ -66,7 +66,7 @@ export function disegnaPunto({
   push();
   translate(x, y);
   rotate(angolo + frameCount);
-  stroke("white");
+  stroke("blue");
   strokeWeight(1);
   noFill();
   let r1 = 5 + volume * 20;
@@ -106,7 +106,7 @@ export function sotto(disegnaTesto) {
   background("black");
 
   // [INFO] Rimuovi il commento per disegnare il testo
-  fill("white");
+  noFill("blue");
   disegnaTesto();
 }
 
